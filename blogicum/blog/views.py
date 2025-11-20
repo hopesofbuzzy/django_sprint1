@@ -1,3 +1,8 @@
+"""Views для отображения динамических страниц.
+
+Отображает страницы со списком блогов и т.д.
+"""
+
 from django.shortcuts import render
 
 posts = [
@@ -55,7 +60,9 @@ def index(request):
 
 
 def post_detail(request, id):
-    """Отображает детальное описание блога id и его текст."""
+    """Отображает детальное описание блога id и его текст.
+    :param id: идентификатор блога
+    """
     for post in posts:
         if post['id'] == id:
             context = {'real': True, 'post': post}
@@ -64,6 +71,8 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
-    """Выводит все блоги определённое категории."""
+    """Выводит все блоги определённое категории.
+    :param category_slug: категория блогов
+    """
     context = {'category': category_slug}
     return render(request, 'blog/category.html', context)
