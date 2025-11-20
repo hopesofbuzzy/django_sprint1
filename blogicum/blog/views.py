@@ -51,7 +51,9 @@ posts = [
 
 # Create your views here.
 def index(request):
-    """Отображает главную страничку - список блогов."""
+    """GET-запрос для отображения главной странички - списка блогов.
+    :return: отображает список блогов с информацией
+    """
     posts1 = posts.copy()
     posts1.reverse()
     context = {'posts': posts1}
@@ -60,8 +62,9 @@ def index(request):
 
 
 def post_detail(request, id):
-    """Отображает детальное описание блога id и его текст.
+    """GET-запрос для отображения детального описания блога id и его текста.
     :param id: идентификатор блога
+    :return: отображает информацию о посте
     """
     for post in posts:
         if post['id'] == id:
@@ -71,8 +74,9 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
-    """Выводит все блоги определённое категории.
+    """GET-запрос для вывода все блогов определённой категории.
     :param category_slug: категория блогов
+    :return: (заглушка) отображает название категории
     """
     context = {'category': category_slug}
     return render(request, 'blog/category.html', context)

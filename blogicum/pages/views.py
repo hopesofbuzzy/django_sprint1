@@ -7,10 +7,14 @@ from django.shortcuts import render
 
 # Create your views here.
 def about(request):
-    """Отображает страничку 'О проекте'."""
+    """GET-запрос для отображения странички 'О проекте'.
+    :return: отображает страницу
+    """
     return render(request, 'pages/about.html')
 
 
 def rules(request):
-    """Отображает страничку 'Правила'."""
+    """GET-запрос для отображения странички 'Правила'.
+    :return: отображает страницу
+    """
     return render(request, 'pages/rules.html')
