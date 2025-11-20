@@ -56,9 +56,9 @@ def index(request):
 def post_detail(request, id):
     for post in posts:
         if post['id'] == id:
-            context = {'post': post}
+            context = {'real': True, 'post': post}
             return render(request, 'blog/detail.html', context)
-    return render(request, 'blog/detail.html', {})
+    return render(request, 'blog/detail.html', {'real': False})
 
 
 def category_posts(request, category_slug):
