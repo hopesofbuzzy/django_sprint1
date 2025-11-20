@@ -46,6 +46,7 @@ posts = [
 
 # Create your views here.
 def index(request):
+    """Отображает главную страничку - список блогов."""
     posts1 = posts.copy()
     posts1.reverse()
     context = {'posts': posts1}
@@ -54,6 +55,7 @@ def index(request):
 
 
 def post_detail(request, id):
+    """Отображает детальное описание блога id и его текст."""
     for post in posts:
         if post['id'] == id:
             context = {'real': True, 'post': post}
@@ -62,5 +64,6 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
+    """Выводит все блоги определённое категории."""
     context = {'category': category_slug}
     return render(request, 'blog/category.html', context)
